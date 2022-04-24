@@ -1,10 +1,11 @@
-![GitHub Views](https://komarev.com/ghpvc/?usernameEduardoMartinez68&color=2685BF)
-### Print('Hello word') 👋
+![GitHub Views](https://komarev.com/ghpvc/?username=EduardoMartinez68&color=2685BF)
+ 
+ ## Print('Hello word') 👋🌱
  I'm a programmer. I love star wars, video games and geek stuff. 
  Here you will find my crazy projects that I do in my free time
  
- ##My Socials networks
- - Youtube:[youtube.com/Eduardo el programador](https://youtube.com/channel/UC274AWQAlQXb4_b_4oD1Jkw)
+ ##My Socials networks 📫 
+ - Youtube: [youtube.com/Eduardo el programador](https://youtube.com/channel/UC274AWQAlQXb4_b_4oD1Jkw)
 <!--
 **EduardoMartinez68/EduardoMartinez68** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
