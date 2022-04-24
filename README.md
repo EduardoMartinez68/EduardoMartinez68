@@ -1,4 +1,4 @@
-### Hi there 👋
+### Print('Hello word') 👋
 ### I'm a programmer. I love star wars, video games and geek stuff. Here you will find my crazy projects that I do in my free time
 <!--
 **EduardoMartinez68/EduardoMartinez68** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
