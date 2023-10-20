@@ -1,22 +1,24 @@
-![GitHub Views](https://komarev.com/ghpvc/?username=EduardoMartinez68&color=2685BF)
- 
- ## Print('Hello word') 👋🌱
- I'm a programmer. I love star wars, video games and geek stuff. 
- Here you will find my crazy projects that I do in my free time
- 
- ##My Socials networks 📫 
- - Youtube: [youtube.com/Eduardo el programador](https://youtube.com/channel/UC274AWQAlQXb4_b_4oD1Jkw)
-<!--
-**EduardoMartinez68/EduardoMartinez68** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+![GitHub Profile Views](https://komarev.com/ghpvc/?username=EduardoMartinez68&color=2685BF)
 
-Here are some ideas to get you started:
+# 👋 Hello, galaxy!
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+I'm Eduardo, a passionate programmer who wields Python with the expertise of a Jedi Master. With a lightsaber of code, I've journeyed through the tech galaxy, mastering the ways of Node.js, JavaScript, Java, C, and C++. Along the way, I've worked on various web pages and indie video games, leaving my mark in the stars.
+
+## 🌌 About Me
+
+- 💻 Python Expert.
+  - - 💻 Python IA.
+  - - 💻 Python DataScine.
+- 🌠 Star Wars aficionado.
+- 🎮 Video games are my escape pods.
+- 🚀 Geek culture is my guiding star.
+
+## 🚀 My Latest Projects
+
+- 📁 [My Repositories](https://github.com/EduardoMartinez68?tab=repositories): Check out my latest coding adventures.
+
+## 📫 Connect with me
+
+- 📧 Email me at eduardoa4848@Outlook.es
+
+**May the Force of code be with you** 🌌
