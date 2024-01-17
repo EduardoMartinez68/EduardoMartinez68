@@ -2,13 +2,12 @@
 
 # 👋 Hello, galaxy!
 
-I'm Eduardo, a passionate programmer who wields Python with the expertise of a Jedi Master. With a lightsaber of code, I've journeyed through the tech galaxy, mastering the ways of Node.js, JavaScript, Java, C, and C++. Along the way, I've worked on various web pages and indie video games, leaving my mark in the stars.
-:python: :java: :postgresql: :heavy_plus_sign: :video_game: :gear: 
+I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise of a Jedi Master. With a lightsaber of code, I've journeyed through the tech galaxy, mastering the ways of ☁️ Node.js, ☁️ JavaScript, ☕ Java, 💻 C, and 👨‍💻 C++. Along the way, I've worked on various web pages and indie video games, leaving my mark in the stars.
 
 ##Skills
-- 💻 Python Expert.
-  - - 💻 Python IA.
-  - - 💻 Python DataScine.
+- 🐍 Python Expert.
+  - - 🐍 Python IA.
+  - - 🐍 Python DataScine.
 - ☕ Java developer
   - - ☕ Software CRM
   - - ☕ Desktop Software
@@ -23,7 +22,7 @@ I'm Eduardo, a passionate programmer who wields Python with the expertise of a J
   - - 📙 mysql
   - - 📙 MariDB
    
-![Logo de Python]([https://www.python.org/static/community_logos/python-logo.png](https://www.visionnaire.com.br/es/dbimages/visionnaire-blog-star-wars-programacion-storm1_16497_img.jpg))
+![python]([https://www.python.org/static/community_logos/python-logo.png](https://www.visionnaire.com.br/es/dbimages/visionnaire-blog-star-wars-programacion-storm1_16497_img.jpg)
 
 ## 🌌 About Me
 - 🌠 Star Wars aficionado.
@@ -39,5 +38,7 @@ I'm Eduardo, a passionate programmer who wields Python with the expertise of a J
 
 - 📧 Email me at eduardoa4848@Outlook.es
 
-**May the Force of code be with you** 🌌
+**May the Force of code be with you** 🌌  
+# ❤️ I love open source!  
+
 ![Logo de Python](https://www.python.org/static/community_logos/python-logo.png)
