@@ -1,6 +1,7 @@
 ![GitHub Profile Views](https://komarev.com/ghpvc/?username=EduardoMartinez68&color=2685BF)
 
 # 👋 Hello, galaxy!
+![Logo de Python](https://www.python.org/static/community_logos/python-logo.png)  
 
 I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise of a Jedi Master. With a lightsaber of code, I've journeyed through the tech galaxy, mastering the ways of ☁️ Node.js, ☁️ JavaScript, ☕ Java, 💻 C, and 👨‍💻 C++. Along the way, I've worked on various web pages and indie video games, leaving my mark in the stars.
 
@@ -21,8 +22,6 @@ I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise o
   - - 🍃 MongoDB
   - - 📙 mysql
   - - 📙 MariDB
-   
-![python]([https://www.python.org/static/community_logos/python-logo.png](https://www.visionnaire.com.br/es/dbimages/visionnaire-blog-star-wars-programacion-storm1_16497_img.jpg)
 
 ## 🌌 About Me
 - 🌠 Star Wars aficionado.
