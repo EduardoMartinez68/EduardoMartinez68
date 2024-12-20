@@ -7,8 +7,8 @@ I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise o
 - 🐍 Python Expert.
   - - 🐍 Python IA.
   - - 🐍 Python DataScine.
+  - - 🐍 Flask.
 - ☕ Java developer
-  - - ☕ Software CRM
   - - ☕ Desktop Software
 - ☁️ JS/Node.js
   - - ☁️ Backend
@@ -19,7 +19,16 @@ I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise o
   - - 🍃 MongoDB
   - - 📙 mysql
   - - 📙 MariDB
-
+   
+## 📁 My Projects
+ - - 📁 Software CRM (ED Sales)
+ - - 📁 Software ERP (ED Plus)
+ - - 📁 gastronomic software (Füd)
+ - - 📁 version manager (ED Code)
+ - - 📁 virtual assistant (Angela AI)
+ - - 📁 Websites 
+ - - 📁 Videogames
+     
 ## 🌌 About Me
 - 🌠 Star Wars aficionado.
 - 🎮 Video games are my escape pods. Unity Certified
