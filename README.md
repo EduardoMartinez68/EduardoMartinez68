@@ -25,6 +25,7 @@ I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise o
  - - 📁 Software ERP (ED Plus)
  - - 📁 gastronomic software (Füd)
  - - 📁 version manager (ED Code)
+ - - 📁 Point of sale software (BestPoint)
  - - 📁 virtual assistant (Angela AI)
  - - 📁 Websites 
  - - 📁 Videogames
