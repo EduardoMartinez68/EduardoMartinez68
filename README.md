@@ -11,14 +11,22 @@ I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise o
 - ☕ Java developer
   - - ☕ Desktop Software
 - ☁️ JS/Node.js
-  - - ☁️ Backend
-  - - ☁️ AWS
-  - - ☁️ Frontend
+  - - ☁️ Express
+  - - ☁️ NestJS
+  - - ☁️ WebSocket
+  - - ☁️ Socket 
+  - - ☁️ Passport 
+  - - ☁️ bcryptjs
+  - - ☁️ Multer
 - 📚Database 
   - - 🐘 postgresql
   - - 🍃 MongoDB
   - - 📙 mysql
-  - - 📙 MariDB
+  - - 📙 MariDB redis
+  - - 🟥 Redis
+- 🛠️ Service 
+  - - ☁️ AWS
+  - - 🐋 DigitalOcean Cloud
    
 ## 📁 My Projects
  - - 📁 Software CRM (ED Sales)
@@ -38,7 +46,7 @@ I'm Eduardo, a passionate programmer who wields 🐍 Python with the expertise o
   
 ## 🚀 My Latest Projects
 
-- 📁 [My Repositories](https://github.com/EduardoMartinez68?tab=repositories): Check out my latest coding adventures.
+- 👨‍💻 [My Repositories](https://github.com/EduardoMartinez68?tab=repositories): Check out my latest coding adventures.
 
 ## 📫 Connect with me
 
