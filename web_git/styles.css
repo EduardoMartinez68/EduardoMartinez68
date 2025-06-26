@@ -1,0 +1,128 @@
+:root {
+  --bg-main: #010409;
+  --bg-sub: #151B23;
+  --bg-sub2: #262C36;
+  --text: #FFFFFF;
+  --accent: #ffffff;
+  --function: #F09475;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text);
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: var(--bg-sub);
+  padding: 2rem 1rem;
+  border-right: 1px solid #2c2c2c;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar a {
+  color: var(--text);
+  text-decoration: none;
+  display: block;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: var(--bg-sub2);
+  color: var(--accent);
+}
+
+main#contenido {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--bg-main);
+  overflow-y: auto;
+}
+
+h1, h2, h3 {
+  color: var(--accent);
+}
+
+pre code {
+  background-color: #151B23;
+  color: #ffffff;
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid #333;
+  display: block;
+}
+
+/* Paleta de colores tipo VSCode/GitHub Dark */
+.keyword  { color: #569CD6; }     /* Azul claro */
+.string   { color: #CE9178; }     /* Naranja suave */
+.comment  { color: #9198A1; }     /* Verde suave */
+.function { color: #4EC9B0; }     /* Verde agua */
+.tag      { color: #DCDCAA; }     /* Amarillo */
+.attr     { color: #9CDCFE; }     /* Azul celeste */
+.value    { color: #B5CEA8; }     /* Verde grisáceo */
+.number   { color: #B5CEA8; }
+.purple   { color: #C586C0; }
+.function-title{color:#F09475;}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  main#contenido {
+    padding: 1rem;
+  }
+}
+
+
+label_code {
+  display: inline-block;
+  background-color: #4EC9B0;  /* azul pastel translúcido */
+  color: #0a1a16;              /* azul más intenso para texto */
+  padding: 0.15em 0.5em;
+  font-size: 0.85em;
+  font-weight: 600;
+  border-radius: 0.4em;
+  font-family: monospace, Consolas, monospace;
+  user-select: none;
+  cursor: default;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

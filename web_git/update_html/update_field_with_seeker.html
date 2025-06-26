@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function-title">🔔 update_field_with_seeker()</h2>
+
+<h3>👉 ¿Cómo actualizar campos con tarjetas en HTML?</h3>
+
+<p>Función JavaScript para actualizar campos HTML en tiempo real mediante búsqueda dinámica.</p>
+
+<p><label_code>update_field_with_seeker()</label_code> permite automatizar actualizaciones visuales con base en datos del servidor, lo que mejora la experiencia del usuario en interfaces donde se desea mostrar resultados en tarjetas u otros bloques visuales.</p>
+
+<p>Ideal para sistemas donde se necesiten búsquedas en vivo que actualicen secciones enteras sin recargar la página.</p>
+
+<h3>⚙️ Parámetros</h3>
+<pre><code>
+<span class="keyword">function</span> <span class="function">update_field_with_seeker</span>(
+    inputsId,     <span class="comment">// (array) IDs de inputs y selects (el primero es el buscador principal)</span>
+    fieldId,      <span class="comment">// (string) ID del contenedor a actualizar</span>
+    divHtml,      <span class="comment">// (string) Código HTML que usará los datos</span>
+    searchUrl,    <span class="comment">// (string) URL del endpoint o API para obtener resultados</span>
+    delay = <span class="number">500</span> <span class="comment">// (opcional) tiempo de espera antes de buscar</span>
+)
+</code></pre>
+
+<h3>🔍 Ejemplo completo: búsqueda en tiempo real para actualizar campos</h3>
+
+<h3>🖥️ 1️⃣ Código HTML</h3>
+<pre><code>
+<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"row"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"col-10"</span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Input de búsqueda --&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type=</span><span class="string">"text"</span> <span class="attr">id=</span><span class="string">"search-contracts"</span>
+      <span class="attr">placeholder=</span><span class="string">"Buscar contratos por título..."</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"col"</span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Select de estado --&gt;</span>
+    <span class="tag">&lt;select</span> <span class="attr">id=</span><span class="string">"select-status"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">"true"</span><span class="tag">&gt;</span>Activo<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">"false"</span><span class="tag">&gt;</span>Desactivados<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">""</span><span class="tag">&gt;</span>Todos<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;/select&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;br&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"grid-files"</span> <span class="attr">id=</span><span class="string">"field-contracts"</span><span class="tag">&gt;</span>
+  <span class="comment">&lt;!-- Aquí se insertarán los resultados en tarjetas --&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</code></pre>
+
+<h3>🖥️ 1️⃣ Código JS para llamar a la función</h3>
+<pre><code>
+(<span class="keyword">()</span> =&gt; {
+  <span class="keyword">const</span> divHtml = <span class="string">`
+    &lt;div class="card-file" tabindex="0"&gt;
+      &lt;div class="file-info"&gt;
+        &lt;i class="fi fi-sr-document-signed"&gt;&lt;/i&gt;
+        &lt;span&gt;{ title }&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="buttons"&gt;
+        &lt;button class="button" type="button" onclick="nextWeb('/contracts/form_contract/{ id }')"&gt;Usar&lt;/button&gt;
+        &lt;button class="button" type="button" onclick="nextWeb('/contracts/edit_contract/{ id }')"&gt;Editar&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;`</span>;
+
+  <span class="function">update_field_with_seeker</span>(
+    [<span class="string">'search-contracts'</span>, <span class="string">'select-status'</span>],
+    <span class="string">'field-contracts'</span>,
+    divHtml,
+    <span class="string">'contracts/search_contracts/'</span>
+  );
+})();
+</code></pre>
+
+<h3>🖥️ 1️⃣ Código Python en tu servidor</h3>
+<pre><code>
+<span class="keyword">@csrf_exempt</span>
+<span class="keyword">def</span> <span class="function">search_contracts</span>(request):
+    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:
+        data = json.loads(request.body)
+        all_filters = data.get(<span class="string">'allFilters'</span>, [])
+        query = all_filters[0].strip() <span class="keyword">if</span> <span class="function">len</span>(all_filters) &gt; 0 <span class="keyword">else</span> <span class="string">''</span>
+        status = all_filters[1].strip().lower() <span class="keyword">if</span> <span class="function">len</span>(all_filters) &gt; 1 <span class="keyword">else</span> <span class="string">''</span>
+
+        contracts = Contracts.objects.filter(
+            Q(title__icontains=query) | Q(content_html__icontains=query)
+        )
+
+        <span class="comment"># Filtrar por estado</span>
+        <span class="keyword">if</span> status == <span class="string">'true'</span>:
+            contracts = contracts.filter(active=<span class="keyword">True</span>)
+        <span class="keyword">elif</span> status == <span class="string">'false'</span>:
+            contracts = contracts.filter(active=<span class="keyword">False</span>)
+
+        contracts = contracts.order_by(<span class="string">'title'</span>)[:<span class="number">20</span>]
+
+        result_list = [
+            {
+                <span class="string">'id'</span>: c.id,
+                <span class="string">'title'</span>: c.title,
+                <span class="string">'creation_date'</span>: c.creation_date
+            }
+            <span class="keyword">for</span> c <span class="keyword">in</span> contracts
+        ]
+
+        <span class="keyword">return</span> JsonResponse({<span class="string">'success'</span>: <span class="keyword">True</span>, <span class="string">'results'</span>: result_list})
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> JsonResponse({<span class="string">'message'</span>: <span class="string">'Método no permitido'</span>}, status=<span class="number">405</span>)
+</code></pre>
+
+<hr>

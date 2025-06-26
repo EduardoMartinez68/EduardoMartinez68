@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="../styles.css">
+<h2 class="function">🔍 update_table_with_seeker()</h2>
+
+<h3>👉 ¿Cómo actualizar tablas con la ayuda de un motor de búsqueda?</h3>
+
+<p>Función JavaScript para actualizar una tabla HTML en tiempo real a medida que el usuario escribe en un campo de búsqueda (input), obteniendo datos dinámicos desde el servidor.</p>
+
+<p><label_code>update_table_with_seeker</label_code> permite mejorar la experiencia de usuario permitiendo búsquedas en tiempo real sobre una tabla, sin necesidad de recargar la página.</p>
+
+<p>Ideal para integraciones tipo CRM, sistemas administrativos, buscadores de clientes, productos, empleados, etc.</p>
+
+<h3>⚙️ Parámetros</h3>
+<pre><code>
+<span class="keyword">function</span> <span class="function">update_table_with_seeker</span>(
+    inputId,      <span class="comment">// ID del input</span>
+    tableId,      <span class="comment">// ID de la tabla</span>
+    columns,      <span class="comment">// Columnas a mostrar</span>
+    searchUrl,    <span class="comment">// URL de búsqueda</span>
+    delay = <span class="number">500</span>   <span class="comment">// Tiempo en ms</span>
+)
+</code></pre>
+
+
+<h3>🔍 Ejemplo completo: Búsqueda en tiempo real en tabla HTML</h3>
+
+<p>Ejemplo de cómo implementar una búsqueda en tiempo real en una tabla HTML, con conexión a un servidor en Python (Django), utilizando la función <label_code>update_table_with_seeker()</label_code>.</p>
+
+<h3>🖥️ 1️⃣ Código HTML</h3>
+<pre><code>
+<span class="tag">&lt;input</span> <span class="attr">type=</span><span class="string">"text"</span> <span class="attr">id=</span><span class="string">"search"</span> 
+    <span class="attr">placeholder=</span><span class="string">"Buscar..."</span> <span class="tag">/&gt;</span>
+
+<span class="tag">&lt;table</span> <span class="attr">id=</span><span class="string">"results"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;thead&gt;</span><span class="tag">&lt;tr&gt;</span>...<span class="tag">&lt;/tr&gt;</span><span class="tag">&lt;/thead&gt;</span>
+  <span class="tag">&lt;tbody&gt;</span><span class="comment">&lt;!-- resultados dinámicos --&gt;</span><span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</code></pre>
+
+<h3>🖥️ 1️⃣ Código JS para llamar a la función</h3>
+<pre><code>
+<span class="function">update_table_with_seeker</span>(
+    <span class="string">'serach-customers'</span>, <span class="comment">// ID del input (campo de búsqueda)</span>
+    <span class="string">'table-customer'</span>,   <span class="comment">// ID de la tabla HTML</span>
+    [<span class="string">'name'</span>, <span class="string">'email'</span>, <span class="string">'phone'</span>, <span class="string">'cellphone'</span>, <span class="string">'company_name'</span>], <span class="comment">// columnas que se mostrarán</span>
+    <span class="string">'customers/search_customers'</span> <span class="comment">// URL del endpoint en el servidor</span>
+);
+</code></pre>
+
+
+<h3>🖥️ 1️⃣ Código Python en tu servidor</h3>
+<pre><code>
+<span class="keyword">@csrf_exempt</span>
+<span class="keyword">def</span> <span class="function">search_customers</span>(request):
+    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:
+        data = json.loads(request.body)
+        query = data.get(<span class="string">'query'</span>, <span class="string">''</span>).strip()
+
+        customers = Customer.objects.filter(
+            Q(name__icontains=query) | Q(email__icontains=query)
+        ).order_by(<span class="string">'name'</span>)[:<span class="number">20</span>]
+
+        result_list = []
+        <span class="keyword">for</span> c <span class="keyword">in</span> customers:
+            result_list.append({
+                <span class="string">'name'</span>: c.name,
+                <span class="string">'email'</span>: c.email,
+                <span class="string">'phone'</span>: c.phone,
+                <span class="string">'company_name'</span>: c.company_name
+            })
+
+        <span class="keyword">return</span> JsonResponse({<span class="string">'success'</span>: <span class="keyword">True</span>, <span class="string">'results'</span>: result_list})
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> JsonResponse({<span class="string">'message'</span>: <span class="string">'Método no permitido'</span>}, status=<span class="number">405</span>)
+</code></pre>
+
+<hr>

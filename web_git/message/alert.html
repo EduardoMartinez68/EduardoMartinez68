@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manual de Funciones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+    <h1>📘 Manual de funciones</h1>
+
+    <h2 class="function">⚠️ show_alert()</h2>
+    <p>
+        Función JavaScript para mostrar ventanas emergentes (popups) de alerta en la interfaz.
+        Permite mostrar diferentes tipos de mensajes al usuario: <strong>información, éxito, error, pregunta</strong>,
+        etc.
+    </p>
+    <p>
+        <label_code>show_alert()</label_code> actualiza dinámicamente una ventana de alerta personalizada en el HTML, cambiando su
+        texto, íconos, colores y botones, según el tipo de mensaje que deseamos mostrar.
+    </p>
+
+    <h3>⚙️ Parámetros</h3>
+    <pre><code>
+<span class="keyword">function</span> show_alert(
+    type,           <span class="comment">// (string) Tipo de alerta: 'info', 'success', 'alert', 'question'</span>
+    title,          <span class="comment">// (string) Título que se mostrará en la alerta</span>
+    description,    <span class="comment">// (string) Texto descriptivo del mensaje</span>
+    readmoreText    <span class="comment">// (string, opcional) Texto adicional (ej: errores técnicos)</span>
+)
+  </code></pre>
+
+    <hr>
+
+    <h2>🔔 show_notification()</h2>
+    <p>
+        Función JavaScript para mostrar notificaciones flotantes de tipo <em>toast</em>.
+        Ideal para informar rápidamente al usuario sobre el resultado de una acción: éxito, error, advertencia, etc.
+    </p>
+    <p>
+        <code>show_notification()</code> crea dinámicamente una pequeña tarjeta de notificación que aparece en la
+        interfaz durante unos segundos, con iconos y estilos personalizados según el tipo de mensaje.
+    </p>
+
+    <h3>⚙️ Parámetros</h3>
+    <pre><code>
+<span class="keyword">function</span> show_notification(
+    type = <span class="string">'info'</span>,    <span class="comment">// (string) Tipo: 'success', 'error', 'warning', 'info'</span>
+    message = <span class="string">''</span>,     <span class="comment">// (string) Texto de la notificación</span>
+    duration = <span class="string">4000</span>   <span class="comment">// (int) Tiempo en ms (default: 4000)</span>
+)
+  </code></pre>
+
+</body>
+
+</html>
