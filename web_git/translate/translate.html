@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function-title">🌍 How to Translate My App?</h2>
+
+<p>Our ERP system includes a built-in translation feature that makes it easy to translate your app (or any other app) into multiple languages.</p>
+
+<p>The main function responsible for this is <label_code>load_language()</label_code>. This function runs automatically when the web page loads and applies the appropriate language based on the user's preferences. <strong>You don’t need to call it manually</strong>.</p>
+
+<p>When the page is loaded, all translations are saved in a local variable, so you can reuse them later in your code if needed.</p>
+
+<h4>📁 Where is this function located?</h4>
+<p>You can find it in the file: <strong><code>static/js/translate.js</code></strong>. If you're curious or want to customize how translations work, you can review this script.</p>
+
+<h4>📂 How do I add new languages?</h4>
+<p>When you create a new app, the ERP will automatically create a <code>locale</code> folder for you. Inside this folder, you should create subfolders for each language you want to support, such as:</p>
+
+<pre><code>
+apps/my_app/locale/
+├── es/
+│   └── translate.json
+├── en/
+│   └── translate.json
+├── pl/
+│   └── translate.json
+</code></pre>
+
+<h3>⚙️ translate.json</h3>
+<p>In this example I am doing a translation for Polish. 🇵🇱 ❤️</p>
+<pre><code>
+<span class="keyword"></span> <span class="function">apps/my_app/locale/pl/translate.json</span>
+    {
+    "navbar-customers": "Moi klienci",
+    "navbar-add": "Nowy klient +",
+    "label-search-home": "Szukaj klienta",
+    "placeholder-search-home": "Szukaj klientów po e-mailu lub imieniu...",
+    "label-status-contract": "Status klienta",
+    "table-name": "Imię i nazwisko",
+    "table-email": "E-mail",
+    "table-phone": "Telefon",
+    "table-cellphone": "Komórka",
+    "table-company-name": "Nazwa firmy",
+
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    }
+
+</code></pre>
+
+<h3>🔍 Example in HTML:</h3>
+<p>To translate elements in your web app, simply use the attribute <code>t</code> in your HTML tags. This <code>t</code> attribute acts as the key used by the PLUS ERP system to look up the corresponding translation from the language JSON files.</p>
+<pre><code>
+<span class="tag">&lt;table</span> <span class="attr">id=</span><span class="string">"table-customer"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;thead&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attr">t=</span><span class="string">"table-name"</span><span class="tag">&gt;</span>Name<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attr">t=</span><span class="string">"table-email"</span><span class="tag">&gt;</span>E-mail<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attr">t=</span><span class="string">"table-phone"</span><span class="tag">&gt;</span>Cellphone<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attr">t=</span><span class="string">"table-cellphone"</span><span class="tag">&gt;</span>Phone<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attr">t=</span><span class="string">"table-company-name"</span><span class="tag">&gt;</span>Company Name<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th&gt;&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/thead&gt;</span>
+
+  <span class="tag">&lt;tbody</span> <span class="attr">id=</span><span class="string">"container-table"</span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Recorre la lista de clientes --&gt;</span>
+    <span class="tag">{% for customer in customers %}</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>{{ customer.name }}<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>{{ customer.email }}<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>{{ customer.phone }}<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>{{ customer.cellphone }}<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>{{ customer.company_name }}<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;th&gt;</span>
+        <span class="tag">&lt;button</span> <span class="attr">class=</span><span class="string">"btn btn-normal"</span> <span class="attr">type=</span><span class="string">"button"</span> 
+          <span class="attr">onclick=</span><span class="string">"nextWeb('customers/edit_customer/{{ customer.id }}/')"</span><span class="tag">&gt;</span>
+          <span class="tag">&lt;i</span> <span class="attr">class=</span><span class="string">"fi fi-sr-pencil"</span><span class="tag">&gt;&lt;/i&gt;</span>
+        <span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">{% endfor %}</span>
+  <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</code></pre>
+<p>When the page loads, PLUS will automatically replace the inner content of any tag with a <code>t</code> attribute using the translated value from the current language file.</p>
+<br><br>
+<h3>🖥️ 1️⃣ Updating a container when a search is made</h3>
+<p>The function <label_code>update_container_with_seeker()</label_code> (and its variants) is used to dynamically update sections of the page with new HTML content received from the server — such as search results.</p>
+
+<p>To make sure these dynamic elements are also translated, each HTML element within your template must include a <code>t</code> attribute that matches a translation key in your <code>translate.json</code> file.</p>
+
+<p>For example, if your buttons in the dynamic content have:</p>
+
+<pre><code>
+(<span class="keyword">()</span> =&gt; {
+  <span class="keyword">const</span> divHtml = <span class="string">`
+    &lt;div class="card-file" tabindex="0"&gt;
+      &lt;div class="file-info"&gt;
+        &lt;i class="fi fi-sr-document-signed" aria-hidden="true"&gt;&lt;/i&gt;
+        &lt;span&gt;{ title }&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="buttons"&gt;
+        &lt;button class="button" type="button" onclick="nextWeb('/contracts/form_contract/{ id }')" t="use"&gt;Usar&lt;/button&gt;
+        &lt;button class="button" type="button" onclick="nextWeb('/contracts/edit_contract/{ id }')" t="edit"&gt;Editar&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;`</span>;
+
+  <span class="function">update_container_with_seeker</span>(
+    [<span class="string">'search-contracts'</span>, <span class="string">'select-status'</span>],
+    <span class="string">'field-contracts'</span>,
+    divHtml,
+    <span class="string">'contracts/search_contracts/'</span>,
+    <span class="string">'div'</span>
+  );
+})();
+</code></pre>
+<p>Let me know if you'd like to add a troubleshooting tip or show what happens when a key is missing in the translation file.</p>
