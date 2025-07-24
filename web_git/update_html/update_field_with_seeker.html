@@ -2,41 +2,43 @@
 
 <h2 class="function-title">🔔 update_field_with_seeker()</h2>
 
-<h3>👉 ¿Cómo actualizar campos con tarjetas en HTML?</h3>
+<h3>👉 How to Update Fields with Cards in HTML?</h3>
 
-<p>Función JavaScript para actualizar campos HTML en tiempo real mediante búsqueda dinámica.</p>
+<p>This feature allows you to dynamically update visual content on your web page, such as cards or info blocks, without needing to reload the entire page.</p>
 
-<p><label_code>update_field_with_seeker()</label_code> permite automatizar actualizaciones visuales con base en datos del servidor, lo que mejora la experiencia del usuario en interfaces donde se desea mostrar resultados en tarjetas u otros bloques visuales.</p>
+<p>The JavaScript function <label_code>update_field_with_seeker()</label_code> is used to perform real-time searches and automatically display the results inside HTML elements like cards.</p>
 
-<p>Ideal para sistemas donde se necesiten búsquedas en vivo que actualicen secciones enteras sin recargar la página.</p>
+<p>When a user types into a search input, this function communicates with the server, fetches relevant data, and instantly updates the visible elements. This greatly enhances the user experience by providing immediate search results.</p>
 
-<h3>⚙️ Parámetros</h3>
+<p>✅ <strong>Ideal for:</strong> management systems, dashboards, or any application that needs to display dynamic results based on searches or filters without a full page refresh.</p>
+
+<h3>⚙️ Parameters</h3>
 <pre><code>
 <span class="keyword">function</span> <span class="function">update_field_with_seeker</span>(
-    inputsId,     <span class="comment">// (array) IDs de inputs y selects (el primero es el buscador principal)</span>
-    fieldId,      <span class="comment">// (string) ID del contenedor a actualizar</span>
-    divHtml,      <span class="comment">// (string) Código HTML que usará los datos</span>
-    searchUrl,    <span class="comment">// (string) URL del endpoint o API para obtener resultados</span>
-    delay = <span class="number">500</span> <span class="comment">// (opcional) tiempo de espera antes de buscar</span>
+    inputsId,     <span class="comment">// (array) IDs of inputs and selects (the first is the main search)</span>
+    fieldId,      <span class="comment">// (string) ID of the container to update</span>
+    divHtml,      <span class="comment">// (string) HTML code that will use the data</span>
+    searchUrl,    <span class="comment">// (string) URL of the endpoint or API to get results</span>
+    delay = <span class="number">500</span> <span class="comment">// (optional) delay time before searching</span>
 )
 </code></pre>
 
-<h3>🔍 Ejemplo completo: búsqueda en tiempo real para actualizar campos</h3>
+<h3>🔍 Example: Real-time search to update fields</h3>
 
-<h3>🖥️ 1️⃣ Código HTML</h3>
+<h3>🖥️ 1️⃣ HTML Code</h3>
 <pre><code>
 <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"row"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"col-10"</span><span class="tag">&gt;</span>
-    <span class="comment">&lt;!-- Input de búsqueda --&gt;</span>
+    <span class="comment">&lt;!-- Input of search --&gt;</span>
     <span class="tag">&lt;input</span> <span class="attr">type=</span><span class="string">"text"</span> <span class="attr">id=</span><span class="string">"search-contracts"</span>
-      <span class="attr">placeholder=</span><span class="string">"Buscar contratos por título..."</span><span class="tag">&gt;</span>
+      <span class="attr">placeholder=</span><span class="string">"Search contracts by title..."</span><span class="tag">&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"col"</span><span class="tag">&gt;</span>
-    <span class="comment">&lt;!-- Select de estado --&gt;</span>
+    <span class="comment">&lt;!-- Select status --&gt;</span>
     <span class="tag">&lt;select</span> <span class="attr">id=</span><span class="string">"select-status"</span><span class="tag">&gt;</span>
-      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">"true"</span><span class="tag">&gt;</span>Activo<span class="tag">&lt;/option&gt;</span>
-      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">"false"</span><span class="tag">&gt;</span>Desactivados<span class="tag">&lt;/option&gt;</span>
-      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">""</span><span class="tag">&gt;</span>Todos<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">"true"</span><span class="tag">&gt;</span>Active<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">"false"</span><span class="tag">&gt;</span>Disabled<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option</span> <span class="attr">value=</span><span class="string">""</span><span class="tag">&gt;</span>All<span class="tag">&lt;/option&gt;</span>
     <span class="tag">&lt;/select&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
@@ -44,11 +46,11 @@
 <span class="tag">&lt;br&gt;</span>
 
 <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"grid-files"</span> <span class="attr">id=</span><span class="string">"field-contracts"</span><span class="tag">&gt;</span>
-  <span class="comment">&lt;!-- Aquí se insertarán los resultados en tarjetas --&gt;</span>
+  <span class="comment">&lt;!-- Here the results will be inserted into cards --&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 </code></pre>
 
-<h3>🖥️ 1️⃣ Código JS para llamar a la función</h3>
+<h3>🖥️ 1️⃣ JS Code to call the function</h3>
 <pre><code>
 (<span class="keyword">()</span> =&gt; {
   <span class="keyword">const</span> divHtml = <span class="string">`
@@ -58,8 +60,8 @@
         &lt;span&gt;{ title }&lt;/span&gt;
       &lt;/div&gt;
       &lt;div class="buttons"&gt;
-        &lt;button class="button" type="button" onclick="nextWeb('/contracts/form_contract/{ id }')"&gt;Usar&lt;/button&gt;
-        &lt;button class="button" type="button" onclick="nextWeb('/contracts/edit_contract/{ id }')"&gt;Editar&lt;/button&gt;
+        &lt;button class="button" type="button" onclick="nextWeb('/contracts/form_contract/{ id }')"&gt;Use&lt;/button&gt;
+        &lt;button class="button" type="button" onclick="nextWeb('/contracts/edit_contract/{ id }')"&gt;Edit&lt;/button&gt;
       &lt;/div&gt;
     &lt;/div&gt;`</span>;
 
@@ -72,7 +74,7 @@
 })();
 </code></pre>
 
-<h3>🖥️ 1️⃣ Código Python en tu servidor</h3>
+<h3>🖥️ 1️⃣ Python Code on your server</h3>
 <pre><code>
 <span class="keyword">@csrf_exempt</span>
 <span class="keyword">def</span> <span class="function">search_contracts</span>(request):

@@ -1,53 +1,53 @@
 <link rel="stylesheet" href="../styles.css">
 <h2 class="function">🔍 update_table_with_seeker()</h2>
 
-<h3>👉 ¿Cómo actualizar tablas con la ayuda de un motor de búsqueda?</h3>
+<h3>👉 How to Update Tables Using a Search Engine?</h3>
 
-<p>Función JavaScript para actualizar una tabla HTML en tiempo real a medida que el usuario escribe en un campo de búsqueda (input), obteniendo datos dinámicos desde el servidor.</p>
+<p>This JavaScript function allows you to update an HTML table in real-time as the user types into a search input, fetching dynamic data from the server.</p>
 
-<p><label_code>update_table_with_seeker</label_code> permite mejorar la experiencia de usuario permitiendo búsquedas en tiempo real sobre una tabla, sin necesidad de recargar la página.</p>
+<p>The <label_code>update_table_with_seeker</label_code> function enhances user experience by enabling live search functionality on tables without requiring a full page reload.</p>
 
-<p>Ideal para integraciones tipo CRM, sistemas administrativos, buscadores de clientes, productos, empleados, etc.</p>
+<p>✅ <strong>Ideal for:</strong> CRM systems, administrative platforms, customer/product/employee search tools, and other applications needing efficient data filtering.</p>
 
-<h3>⚙️ Parámetros</h3>
+<h3>⚙️ Parameters</h3>
 <pre><code>
 <span class="keyword">function</span> <span class="function">update_table_with_seeker</span>(
-    inputId,      <span class="comment">// ID del input</span>
-    tableId,      <span class="comment">// ID de la tabla</span>
-    columns,      <span class="comment">// Columnas a mostrar</span>
-    searchUrl,    <span class="comment">// URL de búsqueda</span>
-    delay = <span class="number">500</span>   <span class="comment">// Tiempo en ms</span>
+    inputId,      <span class="comment">// ID of the input</span>
+    tableId,      <span class="comment">// ID of the table</span>
+    columns,      <span class="comment">// Columns to display</span>
+    searchUrl,    <span class="comment">// Search URL</span>
+    delay = <span class="number">500</span>   <span class="comment">// Time in ms</span>
 )
 </code></pre>
 
 
-<h3>🔍 Ejemplo completo: Búsqueda en tiempo real en tabla HTML</h3>
+<h3>🔍 Complete Example: Real-Time Search in an HTML Table</h3>
 
-<p>Ejemplo de cómo implementar una búsqueda en tiempo real en una tabla HTML, con conexión a un servidor en Python (Django), utilizando la función <label_code>update_table_with_seeker()</label_code>.</p>
+<p>An example of how to implement real-time search in an HTML table, connected to a Python (Django) server, using the <label_code>update_table_with_seeker()</label_code> function.</p>
 
-<h3>🖥️ 1️⃣ Código HTML</h3>
+<h3>🖥️ 1️⃣ HTML Code</h3>
 <pre><code>
 <span class="tag">&lt;input</span> <span class="attr">type=</span><span class="string">"text"</span> <span class="attr">id=</span><span class="string">"search"</span> 
-    <span class="attr">placeholder=</span><span class="string">"Buscar..."</span> <span class="tag">/&gt;</span>
+    <span class="attr">placeholder=</span><span class="string">"Search..."</span> <span class="tag">/&gt;</span>
 
 <span class="tag">&lt;table</span> <span class="attr">id=</span><span class="string">"results"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;thead&gt;</span><span class="tag">&lt;tr&gt;</span>...<span class="tag">&lt;/tr&gt;</span><span class="tag">&lt;/thead&gt;</span>
-  <span class="tag">&lt;tbody&gt;</span><span class="comment">&lt;!-- resultados dinámicos --&gt;</span><span class="tag">&lt;/tbody&gt;</span>
+  <span class="tag">&lt;tbody&gt;</span><span class="comment">&lt;!-- answer from the server --&gt;</span><span class="tag">&lt;/tbody&gt;</span>
 <span class="tag">&lt;/table&gt;</span>
 </code></pre>
 
-<h3>🖥️ 1️⃣ Código JS para llamar a la función</h3>
+<h3>🖥️ 1️⃣ JS Code to call the function</h3>
 <pre><code>
 <span class="function">update_table_with_seeker</span>(
-    <span class="string">'serach-customers'</span>, <span class="comment">// ID del input (campo de búsqueda)</span>
-    <span class="string">'table-customer'</span>,   <span class="comment">// ID de la tabla HTML</span>
-    [<span class="string">'name'</span>, <span class="string">'email'</span>, <span class="string">'phone'</span>, <span class="string">'cellphone'</span>, <span class="string">'company_name'</span>], <span class="comment">// columnas que se mostrarán</span>
-    <span class="string">'customers/search_customers'</span> <span class="comment">// URL del endpoint en el servidor</span>
+    <span class="string">'search-customers'</span>, <span class="comment">// ID of the input (search field)</span>
+    <span class="string">'table-customers'</span>,   <span class="comment">// ID of the HTML table</span>
+    [<span class="string">'name'</span>, <span class="string">'email'</span>, <span class="string">'phone'</span>, <span class="string">'cellphone'</span>, <span class="string">'company_name'</span>], <span class="comment">// columns to display</span>
+    <span class="string">'customers/search_customers'</span> <span class="comment">// URL of the endpoint on the server</span>
 );
 </code></pre>
 
 
-<h3>🖥️ 1️⃣ Código Python en tu servidor</h3>
+<h3>🖥️ 1️⃣ Python Code on your server</h3>
 <pre><code>
 <span class="keyword">@csrf_exempt</span>
 <span class="keyword">def</span> <span class="function">search_customers</span>(request):

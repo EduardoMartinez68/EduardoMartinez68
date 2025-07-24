@@ -2,17 +2,23 @@
 
 <h2 class="function-title">🌍 How to Translate My App?</h2>
 
-<p>Our ERP system includes a built-in translation feature that makes it easy to translate your app (or any other app) into multiple languages.</p>
+<p>Our ERP system includes a built-in translation feature that makes it easy to translate your app (or any other app)
+  into multiple languages.</p>
 
-<p>The main function responsible for this is <label_code>load_language()</label_code>. This function runs automatically when the web page loads and applies the appropriate language based on the user's preferences. <strong>You don’t need to call it manually</strong>.</p>
+<p>The main function responsible for this is <label_code>load_language()</label_code>. This function runs automatically
+  when the web page loads and applies the appropriate language based on the user's preferences. <strong>You don’t need
+    to call it manually</strong>.</p>
 
-<p>When the page is loaded, all translations are saved in a local variable, so you can reuse them later in your code if needed.</p>
+<p>When the page is loaded, all translations are saved in a local variable, so you can reuse them later in your code if
+  needed.</p>
 
 <h4>📁 Where is this function located?</h4>
-<p>You can find it in the file: <strong><code>static/js/translate.js</code></strong>. If you're curious or want to customize how translations work, you can review this script.</p>
+<p>You can find it in the file: <strong><code>static/js/translate.js</code></strong>. If you're curious or want to
+  customize how translations work, you can review this script.</p>
 
 <h4>📂 How do I add new languages?</h4>
-<p>When you create a new app, the ERP will automatically create a <code>locale</code> folder for you. Inside this folder, you should create subfolders for each language you want to support, such as:</p>
+<p>When you create a new app, the ERP will automatically create a <code>locale</code> folder for you. Inside this
+  folder, you should create subfolders for each language you want to support, such as:</p>
 
 <pre><code>
 apps/my_app/locale/
@@ -47,7 +53,9 @@ apps/my_app/locale/
 </code></pre>
 
 <h3>🔍 Example in HTML:</h3>
-<p>To translate elements in your web app, simply use the attribute <code>t</code> in your HTML tags. This <code>t</code> attribute acts as the key used by the PLUS ERP system to look up the corresponding translation from the language JSON files.</p>
+<p>To translate elements in your web app, simply use the attribute <code>t</code> in your HTML tags. This <code>t</code>
+  attribute acts as the key used by the PLUS ERP system to look up the corresponding translation from the language JSON
+  files.</p>
 <pre><code>
 <span class="tag">&lt;table</span> <span class="attr">id=</span><span class="string">"table-customer"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;thead&gt;</span>
@@ -62,7 +70,7 @@ apps/my_app/locale/
   <span class="tag">&lt;/thead&gt;</span>
 
   <span class="tag">&lt;tbody</span> <span class="attr">id=</span><span class="string">"container-table"</span><span class="tag">&gt;</span>
-    <span class="comment">&lt;!-- Recorre la lista de clientes --&gt;</span>
+    <span class="comment">&lt;!-- read the container of the customer list--&gt;</span>
     <span class="tag">{% for customer in customers %}</span>
     <span class="tag">&lt;tr&gt;</span>
       <span class="tag">&lt;td&gt;</span>{{ customer.name }}<span class="tag">&lt;/td&gt;</span>
@@ -81,12 +89,15 @@ apps/my_app/locale/
   <span class="tag">&lt;/tbody&gt;</span>
 <span class="tag">&lt;/table&gt;</span>
 </code></pre>
-<p>When the page loads, PLUS will automatically replace the inner content of any tag with a <code>t</code> attribute using the translated value from the current language file.</p>
+<p>When the page loads, PLUS will automatically replace the inner content of any tag with a <code>t</code> attribute
+  using the translated value from the current language file.</p>
 <br><br>
 <h3>🖥️ 1️⃣ Updating a container when a search is made</h3>
-<p>The function <label_code>update_container_with_seeker()</label_code> (and its variants) is used to dynamically update sections of the page with new HTML content received from the server — such as search results.</p>
+<p>The function <label_code>update_container_with_seeker()</label_code> (and its variants) is used to dynamically update
+  sections of the page with new HTML content received from the server — such as search results.</p>
 
-<p>To make sure these dynamic elements are also translated, each HTML element within your template must include a <code>t</code> attribute that matches a translation key in your <code>translate.json</code> file.</p>
+<p>To make sure these dynamic elements are also translated, each HTML element within your template must include a
+  <code>t</code> attribute that matches a translation key in your <code>translate.json</code> file.</p>
 
 <p>For example, if your buttons in the dynamic content have:</p>
 
@@ -113,4 +124,33 @@ apps/my_app/locale/
   );
 })();
 </code></pre>
-<p>Let me know if you'd like to add a troubleshooting tip or show what happens when a key is missing in the translation file.</p>
+<p>Let me know if you'd like to add a troubleshooting tip or show what happens when a key is missing in the translation
+  file.</p>
+
+
+
+<h3>💬 2️⃣ Translating custom labels and help messages using <code>&lt;info-label&gt;</code></h3>
+<p>The custom component <code>&lt;info-label&gt;</code> allows you to display a label and an informative help message
+  for the user. This is especially useful for forms or sections where users may need guidance.</p>
+<p>To support multi-language translation with this component, simply assign translation keys from your
+  <code>translate.json</code> to the <code>label</code> and <code>message</code> attributes. The system will
+  automatically detect and replace them with the corresponding translations.</p>
+<p>For example:</p>
+<pre><code>
+  <span class="comment">------when you not need translate the container--------</span>
+<span class="tag">&lt;info-label</span> <span class="attr">label=</span><span class="string">"Amount that buy to the company *"</span>
+  <span class="attr">message=</span><span class="string">"The amount of this item that you buy from the supplier."</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/info-label&gt;</span>
+
+<span class="comment">------when you need translate the container--------</span>
+<span class="tag">&lt;info-label</span> <span class="attr">label=</span><span class="string">"label-search-home"</span>
+  <span class="attr">message=</span><span class="string">"placeholder-input-search-home"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/info-label&gt;</span>
+
+</code></pre>
+<p>EXAMPLE:</p>
+<center><img src="1.webp" alt=""></center>
+<br>
+<p>This approach gives you full flexibility to either use static strings or translated keys depending on the context.
+Make sure all keys used in <code>label</code> and <code>message</code> exist in your <code>translate.json</code> to
+  avoid missing translations.</p>

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function-title">💬 info-label</h2>
+
+<h3>💬 2️⃣ Translating custom labels and help messages using <code>&lt;info-label&gt;</code></h3>
+<p>The custom component <code>&lt;info-label&gt;</code> allows you to display a label and an informative help message
+  for the user. This is especially useful for forms or sections where users may need guidance.</p>
+<p>To support multi-language translation with this component, simply assign translation keys from your
+  <code>translate.json</code> to the <code>label</code> and <code>message</code> attributes. The system will
+  automatically detect and replace them with the corresponding translations.</p>
+<p>For example:</p>
+<pre><code>
+  <span class="comment">------when you not need translate the container--------</span>
+<span class="tag">&lt;info-label</span> <span class="attr">label=</span><span class="string">"Amount that buy to the company *"</span>
+  <span class="attr">message=</span><span class="string">"The amount of this item that you buy from the supplier."</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/info-label&gt;</span>
+
+<span class="comment">------when you need translate the container--------</span>
+<span class="tag">&lt;info-label</span> <span class="attr">label=</span><span class="string">"label-search-home"</span>
+  <span class="attr">message=</span><span class="string">"placeholder-input-search-home"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/info-label&gt;</span>
+
+</code></pre>
+<p>EXAMPLE:</p>
+<center><img src="1.webp" alt=""></center>
+<br>
+<p>This approach gives you full flexibility to either use static strings or translated keys depending on the context.
+Make sure all keys used in <code>label</code> and <code>message</code> exist in your <code>translate.json</code> to
+  avoid missing translations.</p>

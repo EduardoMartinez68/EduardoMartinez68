@@ -10,47 +10,48 @@
 
 <body>
 
-    <h1>📘 Manual de funciones</h1>
+    <h1>📘 Function Manual</h1>
 
     <h2 class="function">⚠️ show_alert()</h2>
     <p>
-        Función JavaScript para mostrar ventanas emergentes (popups) de alerta en la interfaz.
-        Permite mostrar diferentes tipos de mensajes al usuario: <strong>información, éxito, error, pregunta</strong>,
-        etc.
+        JavaScript function to display popup alert windows in the interface.
+        It allows showing different types of messages to the user: <strong>information, success, error, question</strong>, etc.
     </p>
     <p>
-        <label_code>show_alert()</label_code> actualiza dinámicamente una ventana de alerta personalizada en el HTML, cambiando su
-        texto, íconos, colores y botones, según el tipo de mensaje que deseamos mostrar.
+        <label_code>show_alert()</label_code> dynamically updates a custom alert window in the HTML, changing its
+        text, icons, colors, and buttons based on the type of message you want to display.
     </p>
 
-    <h3>⚙️ Parámetros</h3>
+
+    <h3>⚙️ Parameters</h3>
     <pre><code>
-<span class="keyword">function</span> show_alert(
-    type,           <span class="comment">// (string) Tipo de alerta: 'info', 'success', 'alert', 'question'</span>
-    title,          <span class="comment">// (string) Título que se mostrará en la alerta</span>
-    description,    <span class="comment">// (string) Texto descriptivo del mensaje</span>
-    readmoreText    <span class="comment">// (string, opcional) Texto adicional (ej: errores técnicos)</span>
-)
+    <span class="keyword">function</span> show_alert(
+        type,           <span class="comment">// (string) Alert type: 'info', 'success', 'alert', 'question'</span>
+        title,          <span class="comment">// (string) Title to display in the alert</span>
+        description,    <span class="comment">// (string) Descriptive text of the message</span>
+        readmoreText    <span class="comment">// (string, optional) Additional text (e.g., technical errors)</span>
+    )
   </code></pre>
 
     <hr>
 
     <h2>🔔 show_notification()</h2>
     <p>
-        Función JavaScript para mostrar notificaciones flotantes de tipo <em>toast</em>.
-        Ideal para informar rápidamente al usuario sobre el resultado de una acción: éxito, error, advertencia, etc.
+        JavaScript function to display floating <em>toast</em>-style notifications.
+        Ideal for quickly informing the user about the result of an action: success, error, warning, etc.
     </p>
     <p>
-        <code>show_notification()</code> crea dinámicamente una pequeña tarjeta de notificación que aparece en la
-        interfaz durante unos segundos, con iconos y estilos personalizados según el tipo de mensaje.
+        <code>show_notification()</code> dynamically creates a small notification card that appears on the interface 
+        for a few seconds, with custom icons and styles depending on the message type.
     </p>
 
-    <h3>⚙️ Parámetros</h3>
+
+    <h3>⚙️ Parameters</h3>
     <pre><code>
 <span class="keyword">function</span> show_notification(
-    type = <span class="string">'info'</span>,    <span class="comment">// (string) Tipo: 'success', 'error', 'warning', 'info'</span>
-    message = <span class="string">''</span>,     <span class="comment">// (string) Texto de la notificación</span>
-    duration = <span class="string">4000</span>   <span class="comment">// (int) Tiempo en ms (default: 4000)</span>
+    type = <span class="string">'info'</span>,    <span class="comment">// (string) Type: 'success', 'error', 'warning', 'info'</span>
+    message = <span class="string">''</span>,     <span class="comment">// (string) Notification text</span>
+    duration = <span class="string">4000</span>   <span class="comment">// (int) Time in ms (default: 4000)</span>
 )
   </code></pre>
 
