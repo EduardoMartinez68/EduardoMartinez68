@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function-title">🧩 confirm-button</h2>
+
+<h3>To create a confirmation button in the ERP, use <code>&lt;confirm-button&gt;</code></h3>
+<p>
+The custom component <code>&lt;confirm-button&gt;</code> creates a button that asks for user confirmation before running an action. It supports translations via dictionary keys.
+</p>
+
+<h3>🔧 Basic Structure</h3>
+
+<table class="custom-table">
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>title</code></td>
+      <td class="required-no">No</td>
+      <td>Popup title. Can be a static string or a translation key.</td>
+    </tr>
+    <tr>
+      <td><code>message</code></td>
+      <td class="required-no">No</td>
+      <td>Message shown in the confirmation dialog. Can be static or a translation key.</td>
+    </tr>
+    <tr>
+      <td><code>onclick</code></td>
+      <td class="required-yes">Yes</td>
+      <td>Function to call if the user confirms the action. Must be defined globally in <code>window</code>.</td>
+    </tr>
+    <tr>
+      <td><code>textContent</code></td>
+      <td class="required-yes">Yes</td>
+      <td>Text that appears inside the button (e.g., <code>Delete</code>, <code>Save</code>, etc).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>📌 Examples</h3>
+<p>You can use static strings or translated keys in <code>title</code> and <code>message</code>:</p>
+
+<pre><code>
+  <span class="comment">--- With static title and message ---</span>
+  <span class="tag">&lt;confirm-button</span> 
+    <span class="attr">title=</span><span class="string">"Delete Product"</span> 
+    <span class="attr">message=</span><span class="string">"Are you sure you want to delete this product?"</span> 
+    <span class="attr">onclick=</span><span class="string">"deleteProduct()"&gt;</span>
+    Delete
+  <span class="tag">&lt;/confirm-button&gt;</span>
+
+  <span class="comment">--- With translation keys ---</span>
+  <span class="tag">&lt;confirm-button</span> 
+    <span class="attr">title=</span><span class="string">"delete.title"</span> 
+    <span class="attr">message=</span><span class="string">"delete.confirmation.message"</span> 
+    <span class="attr">onclick=</span><span class="string">"deleteItem()"&gt;</span>
+    {{ 'button.delete' }}
+  <span class="tag">&lt;/confirm-button&gt;</span>
+</code></pre>
+<br>
+<center>
+    <img src="web_git/labels/button-question.webp" alt="">
+</center>
+<br>
+<h3>📘 Notes</h3>
+<ul>
+  <li>
+    You can define your translations in <code>translate.json</code> and <code>LANG</code> object to make it work with multilingual support.
+  </li>
+  <li>
+    The <code>onclick</code> must be a global function available on the window (e.g., <code>window.deleteProduct = function () {...}</code>).
+  </li>
+  <li>
+    The confirm popup uses a customizable overlay and styles. Make sure your CSS includes classes like <code>.confirm-popup</code>, <code>.popup-buttons</code>, <code>.popup-accept</code>, <code>.popup-cancel</code>, etc.
+  </li>
+</ul>

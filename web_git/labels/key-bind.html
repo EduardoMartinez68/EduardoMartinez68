@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function-title">⌨ key-bind</h2>
+
+<h3>Creating Keyboard Shortcuts with <code>&lt;key-bind&gt;</code></h3>
+
+<p>
+  The <code>&lt;key-bind&gt;</code> custom element allows you to define global keyboard shortcuts that trigger specific JavaScript functions.
+  This is ideal for enhancing productivity and user experience in your ERP system or application.
+</p>
+
+<h4>Usage:</h4>
+
+<pre><code>
+<span class="comment">&lt;!-- Basic example: Run a function when Shift + V is pressed --&gt;</span>
+<span class="tag">&lt;key-bind</span> <span class="attr">combo=</span><span class="string">"Shift+V"</span> <span class="attr">action=</span><span class="string">"openMenu"</span><span class="tag">&gt;&lt;/key-bind&gt;</span>
+</code></pre>
+
+<p>This element works silently in the background and does not interfere with your visual layout. Once declared, it listens for the key combination and runs the specified function defined in <code>window</code>.</p>
+
+---
+
+<h4>Attributes:</h4>
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>combo</code></td>
+      <td>The key combination to listen for (e.g. <code>Shift+V</code>, <code>Ctrl+Enter</code>, <code>Alt+1</code>).</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td><code>action</code></td>
+      <td>The name of the JavaScript function in <code>window</code> to execute when the combo is triggered.</td>
+      <td>✅ Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<h4>JavaScript Function Example:</h4>
+
+<p>Make sure the function you reference exists globally (attached to <code>window</code>):</p>
+
+<pre><code>
+&lt;script&gt;
+<span class="keyword">function </span><span class="function">openMenu()</span>{
+    alert("Menu opened!");
+  }
+
+<span class="keyword">function</span><span class="function"> createNewClient()</span>{
+    console.log("Creating new client...");
+  }
+&lt;/script&gt;
+</code></pre>
+
+---
+
+<h4>Multiple Key Bindings:</h4>
+
+<p>You can define as many key-bind shortcuts as you need:</p>
+
+<pre><code>
+<span class="tag">&lt;key-bind</span> <span class="attr">combo=</span><span class="string">"Shift+V"</span> <span class="attr">action=</span><span class="string">"openMenu"</span><span class="tag">&gt;&lt;/key-bind&gt;</span>
+<span class="tag">&lt;key-bind</span> <span class="attr">combo=</span><span class="string">"Ctrl+N"</span> <span class="attr">action=</span><span class="string">"createNewClient"</span><span class="tag">&gt;&lt;/key-bind&gt;</span>
+</code></pre>
+
+---
+
+<h4>Important Notes:</h4>
+
+<ul>
+  <li>The <code>combo</code> is case-insensitive and trims extra spaces.</li>
+  <li>If the specified function does not exist in <code>window</code>, a warning will be shown in the console.</li>
+  <li>Each <code>&lt;key-bind&gt;</code> automatically hides itself with <code>display: none</code>.</li>
+</ul>
+
+---
+
+<h4>Supported Keys:</h4>
+
+<p>
+  Any key recognized by <code>e.key</code> in JavaScript can be used, such as:
+</p>
+
+<ul>
+  <li><code>Shift</code>, <code>Control</code> / <code>Ctrl</code>, <code>Alt</code>, <code>Meta</code> (Command key)</li>
+  <li>Letters: <code>A</code> to <code>Z</code></li>
+  <li>Numbers: <code>0</code> to <code>9</code></li>
+  <li>Special keys: <code>Enter</code>, <code>Tab</code>, <code>Escape</code>, <code>ArrowUp</code>, etc.</li>
+</ul>
+
+---
+
+<h4>Advanced Example:</h4>
+
+<pre><code>
+<span class="tag">&lt;key-bind</span> <span class="attr">combo=</span><span class="string">"Shift+V"</span> <span class="attr">action=</span><span class="string">"openMenu"</span><span class="tag">&gt;&lt;/key-bind&gt;</span>
+<span class="tag">&lt;key-bind</span> <span class="attr">combo=</span><span class="string">"Ctrl+N"</span> <span class="attr">action=</span><span class="string">"createNewClient"</span><span class="tag">&gt;&lt;/key-bind&gt;</span>
+
+<span class="keyword">function </span><span class="function">openMenu()</span>{
+    alert("Menu opened!");
+  }
+
+<span class="keyword">function</span><span class="function"> createNewClient()</span>{
+    console.log("Creating new client...");
+  }
+  
+</code></pre>
+
+---
+
+<p>
+This system lets you define powerful keyboard workflows without cluttering your HTML with event listeners or JavaScript code. Each shortcut becomes declarative and easy to manage.
+</p>

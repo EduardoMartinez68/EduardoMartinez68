@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function-title">⌨ input-field</h2>
+
+<h3>To create an input field in the ERP, use <code>&lt;input-field&gt;</code></h3>
+<p>The custom component <code>&lt;input-field&gt;</code> makes it easier to add labeled and translatable input fields.</p>
+
+<h3>🔧 Basic Structure</h3>
+
+
+<table class="custom-table">
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Required?</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>label</code></td>
+      <td class="required-yes">Yes</td>
+      <td>Text or translation key for the label of the input field.</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td class="required-yes">Yes</td>
+      <td>The name used to send this field’s value to the server.</td>
+    </tr>
+    <tr>
+      <td><code>type</code></td>
+      <td class="required-no">No</td>
+      <td>Type of input (e.g., text, email, number). Default is <code>text</code>.</td>
+    </tr>
+    <tr>
+      <td><code>placeholder</code></td>
+      <td class="required-no">No</td>
+      <td>Text that appears inside the input before typing. If omitted, label text is used.</td>
+    </tr>
+    <tr>
+      <td><code>required</code></td>
+      <td class="required-no">No</td>
+      <td>Makes the input mandatory for form submission.</td>
+    </tr>
+    <tr>
+      <td><code>maxlength</code></td>
+      <td class="required-no">No</td>
+      <td>Maximum number of characters allowed.</td>
+    </tr>
+    <tr>
+      <td><code>minlength</code></td>
+      <td class="required-no">No</td>
+      <td>Minimum number of characters required.</td>
+    </tr>
+    <tr>
+      <td><code>value</code></td>
+      <td class="required-no">No</td>
+      <td>Initial value of the input.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>📌 Examples</h3>
+<p>You can choose to use static text or translation keys:</p>
+
+<pre><code>
+  <span class="comment">------when you not need translate the container--------</span>
+  <span class="tag">&lt;input-field</span> <span class="attr">label=</span><span class="string">"Amount that buy to the company *"</span>
+    <span class="attr">placeholder=</span><span class="string">"The amount of this item that you buy from the supplier."</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/input-field&gt;</span>
+
+  <span class="comment">------when you need translate the container. Add the key of the dictionary--------</span>
+  <span class="tag">&lt;input-field</span> <span class="attr">label=</span><span class="string">"label-search-home"</span>
+    <span class="attr">placeholder=</span><span class="string">"placeholder-input-search-home"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/input-field&gt;</span>
+</code></pre>
+
+
+<p>
+This approach gives you full flexibility to use static strings or translated keys depending on your context.<br>
+Make sure that all keys used in <code>label</code> and <code>placeholder</code> exist in your <code>translate.json</code>
+file to avoid missing translations.
+</p>
