@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function">📅 &lt;plus-select-date&gt; Custom Element</h2>
+
+<h3>👉 What Is &lt;plus-select-date&gt; and What Is It Used For?</h3>
+
+<p>
+  <code>&lt;plus-select-date&gt;</code> is a custom HTML element that provides a date range selector with predefined options (Today, Last 7 Days, Current Month, Last Month, Custom) and a modern user interface. 
+</p>
+
+<p>
+  ✅ <strong>Use it when:</strong> you need to filter data, generate reports, or select date intervals in a user-friendly and reusable way.
+</p>
+
+---
+
+<h3>⚙️ How to Use It in HTML</h3>
+
+<pre><code>
+<span class="tag">&lt;plus-select-date</span> 
+  <span class="attr">name-start=</span><span class="string">"start_date"</span> 
+  <span class="attr">name-end=</span><span class="string">"end_date"</span> 
+  <span class="attr">label=</span><span class="string">"Date Range"</span> 
+  <span class="attr">required</span> 
+<span class="tag">&gt;&lt;/plus-select-date&gt;</span>
+</code></pre>
+
+<h4>✅ Attributes:</h4>
+<ul>
+  <li><strong>name-start:</strong> Name/id of the hidden input for the start date.</li>
+  <li><strong>name-end:</strong> Name/id of the hidden input for the end date.</li>
+  <li><strong>label:</strong> Optional label shown above the input.</li>
+  <li><strong>t:</strong> Optional translation key (uses <code>window.translate_text()</code>).</li>
+  <li><strong>required:</strong> Optional. Adds a <code>*</code> mark to indicate the field is mandatory.</li>
+</ul>
+
+---
+
+<h3>📦 Requirements</h3>
+
+<ul>
+  <li>✅ Browser with Shadow DOM support</li>
+  <li>✅ Global <code>window.translate_text()</code> and <code>window.t()</code> translation functions</li>
+  <li>✅ `<a href="https://www.flaticon.com/uicons">Flaticon UIcons</a>` (calendar icons)</li>
+  <li>✅ CSS variable <code>--primary</code> for styling (set in your main CSS)</li>
+</ul>
+
+---
+
+<h3>🎨 Features</h3>
+
+<ul>
+  <li>🌐 Language-aware labels (uses browser language for date formatting)</li>
+  <li>📌 Predefined ranges:
+    <ul>
+      <li>Today</li>
+      <li>Last 7 Days</li>
+      <li>This Month</li>
+      <li>Last Month</li>
+      <li>Custom Range (manual date pickers)</li>
+    </ul>
+  </li>
+  <li>📥 Hidden inputs store start and end dates in `YYYY-MM-DD` format</li>
+  <li>✨ Smooth UX with dropdown and live updates</li>
+</ul>
+
+---
+
+<h3>🧠 How It Works</h3>
+
+<ol>
+  <li>The component builds a calendar icon button and dropdown panel inside its shadow DOM.</li>
+  <li>When a range is selected, the start/end inputs are updated automatically.</li>
+  <li>In "Custom" mode, two native `<input type="date">` fields allow manual selection.</li>
+  <li>The result is shown as a formatted string (e.g., “August 10, 2025 - August 13, 2025”).</li>
+</ol>
+
+---
+
+<h3>🖼️ Rendered Output</h3>
+
+<p>This is what the component renders (inside Shadow DOM):</p>
+
+<pre><code>
+&lt;label class="plus-select-date-label"&gt;Date Range *&lt;/label&gt;
+&lt;div class="plus-select-date-display"&gt;
+  &lt;i class="fi fi-rr-calendar"&gt;&lt;/i&gt;
+  &lt;span&gt;Select Date Range&lt;/span&gt;
+  &lt;i class="fi fi-rr-angle-small-right"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class="plus-select-date-popup"&gt;
+  ...
+&lt;/div&gt;
+
+&lt;input type="hidden" name="start_date" id="start_date"&gt;
+&lt;input type="hidden" name="end_date" id="end_date"&gt;
+</code></pre>
+
+---
+
+<h3>📌 Example Behavior</h3>
+
+- User clicks the calendar field.
+- A dropdown appears with quick date options.
+- Selecting "Last 7 Days" auto-fills the hidden inputs.
+- Choosing "Custom" lets user pick start/end dates manually.
+- Clicking “✅ Accept” saves the range and closes the popup.
+- Clicking “❌ Cancel” closes the popup with no changes.
+
+---
+
+<h3>📁 Styling</h3>
+
+All styles are scoped inside the shadow DOM. To customize global styles:
+```css
+:root {
+  --primary: #007bff; /* Set this in your global CSS */
+}
+<br>
+<center>
+    <img src="web_git/labels/plus-select-date.webp" alt="">
+</center>

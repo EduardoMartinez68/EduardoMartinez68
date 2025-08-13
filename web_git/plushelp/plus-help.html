@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function">🆘 &lt;plus-help&gt; Custom Element</h2>
+
+<h3>👉 What is &lt;plus-help&gt; and What Is It Used For?</h3>
+
+<p>
+  The <label_code>&lt;plus-help&gt;</label_code> custom HTML element is used to display interactive step-by-step tutorials inside your ERP system.
+  It's great for guiding users on how to use specific features or complete actions, such as charging with a receipt or navigating a module.
+</p>
+
+<p>
+  ✅ <strong>Ideal for:</strong> onboarding new users, providing contextual help, and enhancing the usability of complex ERP features.
+</p>
+
+<h3>⚙️ How to Use It in HTML</h3>
+<pre><code>
+<span class="tag">&lt;plus-help</span> 
+  <span class="attr">title=</span><span class="string">"How to charge with receipt?"</span> 
+  <span class="attr">data=</span><span class="string">'help-login'</span> 
+  <span class="attr">t=</span><span class="string">"label-search-home"</span> 
+<span class="tag">&gt;&lt;/plus-help&gt;</span>
+</code></pre>
+
+<ul>
+  <li><strong>title:</strong> The default text for the help button.</li>
+  <li><strong>data:</strong> The unique key used to link the help steps.</li>
+  <li><strong>t:</strong> (optional) A translation key if the title needs translation.</li>
+</ul>
+
+---
+
+<h3>🔨 How to Add Help Steps with JavaScript</h3>
+
+<p>You can add help steps dynamically using either of the following constructors:</p>
+
+<h4>🧱 Method 1: <code>StepHelp</code></h4>
+<pre><code>
+const help = new StepHelp('help-login');
+help.title = translate_text('label-search-home');
+help.message = 'Click on "Add products" and select the items for the receipt.';
+help.image = '';
+help.video = 'https://www.youtube.com';
+</code></pre>
+
+<h4>🧱 Method 2: <code>CreateHelp</code> (Recommended)</h4>
+<pre><code>
+const help = new CreateHelp('help-login');
+
+help.add_step({
+  title: 'Step 1: Search Client',
+  message: "Use the top search bar to find and access the client's profile."
+});
+
+help.add_step({
+  title: translate_text('label-search-home'),
+  message: "Click on 'Add products' and select the items for the receipt."
+});
+
+help.title = 'Help Tutorial: Charging with Receipt';
+help.message = 'Follow the steps to complete a sale with a receipt.';
+help.image = '';
+help.video = 'https://www.youtube.com';
+
+help.save_help_data();
+</code></pre>
+
+---
+
+<h3>🧠 How It Works Internally</h3>
+
+<ul>
+  <li>Each <code>&lt;plus-help&gt;</code> instance creates a button with the title text.</li>
+  <li>When clicked, it shows a popup modal with help steps.</li>
+  <li>It reads from <code>PLUS_HELP_DATA['ayuda-recibo']</code> to render the tutorial steps.</li>
+  <li>Each step can include:
+    <ul>
+      <li>✅ Title</li>
+      <li>✅ Text description</li>
+      <li>✅ Optional image</li>
+      <li>✅ Optional embedded YouTube video</li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+<h3>🖼️ Sample Help Step (Rendered)</h3>
+<pre><code>
+{
+  title: 'Step 1: Search Client',
+  message: 'Use the search bar to find and access the client profile.',
+  image: '/my_app/static/img/search_client.png',
+  video: 'https://www.youtube.com'
+}
+</code></pre>
+
+---
+
+<h3>🗂️ How Steps Are Rendered in the DOM</h3>
+
+<p>Each step is shown in a modal popup with forward/back navigation and a progress bar. Here’s how it looks inside the modal:</p>
+<pre><code>
+&lt;div class="plus-help-step"&gt;
+  &lt;h3&gt;Step 1: Search Client&lt;/h3&gt;
+  &lt;p&gt;Use the top search bar to find and access the client's profile.&lt;/p&gt;
+  &lt;img src="/my_app/static/img/search_client.png" class="plus-help-img" alt="Step Image"&gt;
+  &lt;iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" class="plus-help-video"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+
+---
+
+<h3>🔒 Authentication Requirements</h3>
+
+<p>
+  By default, the system ensures users are logged in to access help content. This is controlled by decorators in the auto-generated <code>views.py</code>.
+</p>
+
+<p>To disable this login requirement for a specific app, modify the <code>config.yaml</code> of the app.</p>
+
+---
+
+<h3>🎯 Final Tips</h3>
+
+<ul>
+  <li>Use short, clear messages for each step.</li>
+  <li>Embed helpful images or videos to improve understanding.</li>
+  <li>Reuse translation keys for consistency across the app.</li>
+  <li>Remember to call <code>save_help_data()</code> to store the help steps in <code>PLUS_HELP_DATA</code>.</li>
+</ul>
+
+---
+<img src="web_git/plushelp/tutorial.webp" alt="">
+<hr>

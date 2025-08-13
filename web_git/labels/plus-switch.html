@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="../styles.css">
+
+<h2 class="function">🎚️ &lt;plus-switch&gt; Custom Element</h2>
+
+<h3>👉 What Is &lt;plus-switch&gt; and What Is It Used For?</h3>
+
+<p>
+  <code>&lt;plus-switch&gt;</code> is a custom HTML element that renders a toggle switch (on/off) with support for translated labels, form integration, and optional info tooltips.
+</p>
+
+<p>
+  ✅ <strong>Use it when:</strong> you need to display a user-friendly toggle switch in a form or settings panel, optionally with translated labels and descriptions.
+</p>
+
+---
+
+<h3>⚙️ How to Use It in HTML</h3>
+
+<pre><code>
+<span class="tag">&lt;plus-switch</span> 
+  <span class="attr">text=</span><span class="string">"Enable feature"</span> 
+  <span class="attr">name=</span><span class="string">"feature_enabled"</span> 
+  <span class="attr">checked=</span><span class="string">"true"</span> 
+  <span class="attr">message=</span><span class="string">"Enables advanced mode for power users."</span> 
+<span class="tag">&gt;&lt;/plus-switch&gt;</span>
+</code></pre>
+
+<h4>✅ Attributes:</h4>
+<ul>
+  <li><strong>text:</strong> Main label shown next to the switch.</li>
+  <li><strong>t:</strong> Optional translation key (uses <code>window.translate_text()</code>). Defaults to <code>text</code>.</li>
+  <li><strong>name:</strong> Name of the input, useful when used inside a form.</li>
+  <li><strong>checked:</strong> If set to "true", "1", or a non-empty value, the switch will be ON by default.</li>
+  <li><strong>message:</strong> Optional description shown above the switch, using a separate <code>&lt;info-label&gt;</code> component.</li>
+</ul>
+
+---
+
+<h3>📦 Requirements</h3>
+
+<ul>
+  <li>✅ Browser with support for <code>Custom Elements</code></li>
+  <li>✅ A global <code>window.translate_text()</code> function (for i18n)</li>
+  <li>✅ Custom element <code>&lt;info-label&gt;</code> (optional for messages)</li>
+  <li>✅ Your stylesheet should include <code>.plus-switch</code> and <code>.plus-switch-slider</code> styles</li>
+</ul>
+
+---
+
+<h3>🎨 Features</h3>
+
+<ul>
+  <li>✅ Automatically translates labels with <code>window.translate_text()</code></li>
+  <li>📝 Optional description with <code>&lt;info-label&gt;</code></li>
+  <li>📥 Native checkbox integrated for form submission</li>
+  <li>🔧 Clean and reusable structure, no Shadow DOM</li>
+</ul>
+
+---
+
+<h3>🧠 How It Works</h3>
+
+<ol>
+  <li>It reads the <code>text</code> or <code>t</code> attribute and passes it to the <code>window.translate_text()</code> function.</li>
+  <li>It checks the <code>checked</code> attribute to decide whether the switch should be initially ON or OFF.</li>
+  <li>If the <code>message</code> attribute exists, it injects an <code>&lt;info-label&gt;</code> component above the switch.</li>
+  <li>The final DOM is rendered using native HTML elements with appropriate CSS classes.</li>
+</ol>
+
+---
+
+<h3>🖼️ Rendered Output</h3>
+
+<pre><code>
+&lt;div&gt;
+  &lt;info-label label="Enable feature" message="Enables advanced mode for power users."&gt;&lt;/info-label&gt;
+  &lt;div class="plus-switch"&gt;
+    &lt;span class="plus-switch-label" t="Enable feature"&gt;Enable feature&lt;/span&gt;
+    &lt;label class="plus-switch-toggle"&gt;
+      &lt;input type="checkbox" name="feature_enabled" checked&gt;
+      &lt;span class="plus-switch-slider"&gt;&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+---
+
+<h3>📌 Example Behavior</h3>
+
+- The user sees a switch with a translated label like “Enable feature”.
+- If the `message` attribute is defined, an explanation appears above the switch.
+- The value is submitted via a form using the name set in the `name` attribute.
+- The label supports translation for multilingual apps.
+
+---
+<center>
+    <img src="web_git/labels/plus-switch.webp" alt="">
+</center>
