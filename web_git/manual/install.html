@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="../styles.css">
+<section style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 2rem; color: #f0f0f0;">
+  <h1 style="font-size: 2.2rem; color: #ffffff;">📦 Technical Installation</h1>
+  <h2 style="font-size: 1.5rem; color: #cccccc;">Get PLUS ERP up and running</h2>
+
+  <p>This guide will help you install <strong>PLUS ERP</strong> on your local machine.</p>
+
+  <hr style="border-color: #444;">
+
+  <h2 style="font-size: 1.5rem; color: #ffffff;">🔧 Requirements</h2>
+  <ul>
+    <li>🐍 <strong>Python</strong> (3.10 or higher recommended)</li>
+    <li>🐘 <strong>PostgreSQL</strong> (Ensure it's running locally or accessible via network)</li>
+    <li>🌿 <strong>Git</strong></li>
+    <li>📦 <strong>pip</strong> (Python package manager)</li>
+    <li>📁 <strong>npm</strong> (for frontend assets if needed in future versions)</li>
+  </ul>
+
+  <hr style="border-color: #444;">
+
+  <h2 style="font-size: 1.5rem; color: #ffffff;">📥 Installation Steps</h2>
+  <ol>
+    <li>Clone the project from GitHub:
+      <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">git clone https://github.com/EduardoMartinez68/PLUS_ENGINE_ERP</pre>
+    </li>
+    <li>Navigate into the project folder:
+      <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">cd plus-erp</pre>
+    </li>
+    <li>Install Python dependencies:
+      <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">pip install -r requirements.txt</pre>
+    </li>
+    <li>(Optional) Install Node.js dependencies (if needed for future frontend assets):
+      <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">npm install</pre>
+    </li>
+    <li>Start the server:
+      <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">python manage.py runserver</pre>
+    </li>
+  </ol>
+
+  <p>You should now be able to open your browser and access the ERP at:</p>
+  <blockquote style="background-color: #111921; padding: 1rem; border-left: 5px solid #888; color: #eee;">
+    <code>http://localhost:8000</code>
+  </blockquote>
+
+  <hr style="border-color: #444;">
+
+  <h2 style="font-size: 1.5rem; color: #ffffff;">👨‍💻 Technical Overview</h2>
+  <p><strong>PLUS ERP</strong> is a modular system written in Python with a clean and minimal frontend. Below is a quick tech breakdown:</p>
+  <ul>
+    <li>🎨 <strong>Frontend:</strong> HTML + CSS (no Bootstrap)</li>
+    <li>🧠 <strong>Backend:</strong> Python</li>
+    <li>📊 <strong>Database:</strong> PostgreSQL</li>
+    <li>🧱 <strong>Architecture:</strong> Lightweight MVC</li>
+    <li>🎨 <strong>CSS Style:</strong> Custom styling using prefixes like <code>sub-menu-app-</code> to avoid class name conflicts</li>
+  </ul>
+
+  <p>This modular architecture makes PLUS ERP easy to maintain, extend, and customize for your own business needs.</p>
+
+  <hr style="border-color: #444;">
+
+  <p>Need help or want to contribute?</p>
+  <p>Visit the GitHub repo 👉 <a href="https://github.com/EduardoMartinez68/PLUS_ENGINE_ERP" target="_blank" style="color: #4da8ff;">https://github.com/EduardoMartinez68/PLUS_ENGINE_ERP</a></p>
+</section>

@@ -1,0 +1,187 @@
+<link rel="stylesheet" href="../styles.css">
+<section style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 2rem; color: #f0f0f0;">
+  <h1 style="font-size: 2.2rem; color: #ffffff;">🚀 Creating a New App</h1>
+  <h2 style="font-size: 1.5rem; color: #cccccc;">Step-by-step guide</h2>
+
+  <p>Run the following command inside your project terminal:</p>
+  <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">python createApp.py</pre>
+  <p>You will be asked for the name of your new app, and it will be automatically created inside the <code>apps/</code> folder.</p>
+
+  <hr style="border-color: #444;">
+
+  <h2 style="font-size: 1.5rem; color: #ffffff;">📁 Project Structure</h2>
+  <pre style="background-color: #1e1e1e; color: #ccc; padding: 1rem; border-radius: 5px;">
+PLUS ERP/
+├── createApp.py
+├── apps/
+│   ├── my_app/
+│       └── config.yaml
+│       └── config/
+│       └── links/      
+│       └── locale/   
+│       └── static/   
+│       └── views/   
+│       └── db.sql   
+├── core/
+├── database/
+├── media/
+├── static/
+├── .env
+├── manager.py
+  </pre>
+
+  <hr style="border-color: #444;">
+
+  <h2 style="font-size: 1.5rem; color: #ffffff;">⚙️ App Configuration</h2>
+  <p>The <code>config.yaml</code> file defines your app's views and behavior. You usually only need to change the icon or the dependencies if your app relies on other apps.</p>
+
+  <p><strong>Example with dependencies:</strong></p>
+  <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">
+name: "my_app"
+icon: "/my_app/static/icon.webp"
+path: "/my_app"
+depends: ["other_app"]
+dbInit: true
+permissionsFile: 'permissions.json'
+  </pre>
+
+  <p><strong>If your app has no dependencies, omit the <code>depends</code> field:</strong></p>
+  <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">
+name: "my_app"
+icon: "/my_app/static/icon.webp"
+path: "/my_app"
+dbInit: true
+permissionsFile: 'permissions.json'
+  </pre>
+
+  <hr style="border-color: #444;">
+
+  <h2 style="font-size: 1.5rem; color: #ffffff;">🗃️ Database</h2>
+  <p>This ERP uses <strong>PostgreSQL</strong> as its main database.</p>
+  <p>Each app contains a <code>db.sql</code> file where you define the basic table structure, and optionally your own schema.</p>
+  <p>This file is reloaded every time the server restarts, so you can add update clauses to avoid errors.</p>
+
+  <p><strong>Example:</strong></p>
+  <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">
+-- Create schema if it doesn't exist
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_namespace WHERE nspname = 'customer') THEN
+        EXECUTE 'CREATE SCHEMA customer';
+    END IF;
+END$$;
+
+-- Create table if it doesn't exist
+CREATE TABLE IF NOT EXISTS customer.customer (
+    id bigserial NOT NULL,
+    id_branch bigint,
+    name varchar(300) NOT NULL,
+    email text,
+    this_customer_is_a_company boolean NOT NULL DEFAULT false,
+    company_name varchar(255),
+    rfc varchar(50),
+    curp varchar(50),
+    phone varchar(50),
+    cellphone varchar(50),
+    website text,
+    creation_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    country varchar(100),
+    status boolean NOT NULL DEFAULT true,
+    CONSTRAINT id_key_customer PRIMARY KEY (id)
+);
+
+-- Add FK only if it doesn't exist
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM information_schema.table_constraints
+        WHERE constraint_name = 'branch_fk'
+          AND table_schema = 'customer'
+          AND table_name = 'customer'
+    ) THEN
+        ALTER TABLE customer.customer
+        ADD CONSTRAINT branch_fk FOREIGN KEY (id_branch)
+        REFERENCES company.branch (id)
+        MATCH FULL
+        ON DELETE SET NULL
+        ON UPDATE CASCADE;
+    END IF;
+END$$;
+  </pre>
+
+  <hr style="border-color: #444;">
+  <p>This can be change for you for create and update your App.</p>
+  <p style="text-align: center;">
+    <img src="web_git/manual/seguro.webp" alt="Project Image" style="max-width: 100%; border-radius: 10px; margin-top: 1rem;">
+  </p>
+  <br><br>
+  <hr style="border-color: #444;">
+  <h2 style="font-size: 1.5rem; color: #ffffff;">🔗 Routes / Links / URLs</h2>
+  <p>The most important part is programming your routes inside the <code>links/</code> folder.</p>
+  <p>PLUS ERP uses a Django-like skeleton but automates the creation of <code>urls.py</code> and <code>views.py</code> files via scripts that scan all <code>links/</code> folders and generate these files inside your app's <code>config</code> folder.</p>
+  <p style="text-align: center;">
+    <img src="web_git/manual/links.webp" alt="Project Image" style="max-width: 100%; border-radius: 10px; margin-top: 1rem;">
+  </p>
+  <p><strong>Example of a file inside the <code>links</code> folder:</strong></p>
+  <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">
+from django.shortcuts import render
+
+def cases_home(request):
+    return render(request, 'index.html')
+
+def left_out(request):
+    return render(request, 'index.html')
+
+def case_home_2(request):
+    return render(request, 'index.html')
+  </pre>
+
+  <p>When the server restarts, it reads all files, models, views, and databases to regenerate the <code>urls.py</code> and <code>views.py</code> files in your app's <code>config</code> folder.</p>
+
+  <p><strong>Example <code>urls.py</code> generated:</strong></p>
+  <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('cases', views.cases_home, name='cases_home'),
+    path('left_out', views.left_out, name='left_out'),
+    path('case_2', views.case_home_2, name='case_home_2'),
+]
+  </pre>
+
+  <p><strong>Example <code>views.py</code> generated (with login required):</strong></p>
+  <pre style="background-color: #1e1e1e; color: #4da8ff; padding: 1rem; border-radius: 5px;">
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required(login_url='login')
+def cases_home(request):
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
+
+@login_required(login_url='login')
+def left_out(request):
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
+
+@login_required(login_url='login')
+def case_home_2(request):
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
+  </pre>
+
+  <p>As you can see, the files are rewritten and include a clause requiring users to be logged in to access features.</p>
+  <p>If you want your app to be accessible without login, you can disable this feature in your app's <code>config.yaml</code>.</p>
+  <br>
+  <p>This not can be change for you. This is the engine of PLUS.</p>
+  <p style="text-align: center;">
+    <img src="web_git/manual/not_tocar.webp" alt="Project Image" style="max-width: 100%; border-radius: 10px; margin-top: 1rem;">
+  </p>
+</section>
